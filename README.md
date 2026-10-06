@@ -85,14 +85,14 @@ Listing fields: id, title, description, category, style_tags, size, condition, p
      the file and function that holds it.
 
      Like this:
-       "If search_listings returns an empty list, put a message naming what to change (loosen the price, size, or description) in the session and stop. Otherwise take the first result and go to suggest_outfit. — agent.py::run_agent
+        "If search_listings returns an empty list, put a message in the session
         and stop. Otherwise take the first result and go to suggest_outfit."
         — agent.py::run_agent
-
+        
      The grader checks your code against what you claim here, so the file and
      function have to be real. -->
 
-**Branch rule:**
+**Branch rule:**If search_listings returns an empty list, put a message naming what to change (loosen the price, size, or description) in the session and stop. Otherwise take the first result and go to suggest_outfit.
 
 **Where it lives:** `agent.py::run_agent`
 
