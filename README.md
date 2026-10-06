@@ -63,6 +63,12 @@ Listing fields: id, title, description, category, style_tags, size, condition, p
 - **Inputs:** `description` (str), `size` (str), `max_price` (float)
 - **Returns:** A list of listing dicts, each with id, title, description, category, style_tags, size, condition, price, colors, brand, platform.
 - **When it has nothing:** Returns an empty list `[]` (not None, not an error).
+### `suggest_outfit`
+
+- **What it does:** Takes one listing and the user's wardrobe and suggests outfits that combine them.
+- **Inputs:** `new_item` (dict, a listing from search_listings), `wardrobe` (list of dicts, the wardrobe items; may be empty)
+- **Returns:** A string of 2-3 outfit ideas, each naming the new item and the wardrobe pieces it goes with.
+- **When it has nothing:** If `wardrobe` is empty, returns a string of general styling advice for the item instead of failing.
 
 ### `create_fit_card`
 
