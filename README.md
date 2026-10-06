@@ -46,7 +46,7 @@
 ---
 
 ## Tool Inventory
-
+Listing fields: id, title, description, category, style_tags, size, condition, price, colors, brand, platform
 <!-- Four lines per tool. This is worth 2 points and it's the single most
      common place students lose them.
 
