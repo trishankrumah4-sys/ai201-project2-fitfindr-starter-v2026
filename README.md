@@ -59,24 +59,17 @@ Listing fields: id, title, description, category, style_tags, size, condition, p
 
 ### `search_listings`
 
-- **What it does:**
-- **Inputs:** <!-- name and type each: `max_price` (float), not "a price" -->
-- **Returns:**
-- **When it has nothing:**
-
-### `suggest_outfit`
-
-- **What it does:**
-- **Inputs:**
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** Searches data/listings.json for items matching a text description, a size, and a price ceiling.
+- **Inputs:** `description` (str), `size` (str), `max_price` (float)
+- **Returns:** A list of listing dicts, each with id, title, description, category, style_tags, size, condition, price, colors, brand, platform.
+- **When it has nothing:** Returns an empty list `[]` (not None, not an error).
 
 ### `create_fit_card`
 
-- **What it does:**
-- **Inputs:**
-- **Returns:**
-- **When it has nothing:**
+ **What it does:** Writes a short social-media-style caption for an outfit.
+- **Inputs:** `outfit` (str, the text from suggest_outfit), `new_item` (dict, the listing)
+- **Returns:** A string of 1-3 sentences that someone would actually post, mentioning the item.
+- **When it has nothing:** If `outfit` is empty, returns a caption based on `new_item` alone.
 
 ---
 
@@ -86,7 +79,7 @@ Listing fields: id, title, description, category, style_tags, size, condition, p
      the file and function that holds it.
 
      Like this:
-       "If search_listings returns an empty list, put a message in the session
+       "If search_listings returns an empty list, put a message naming what to change (loosen the price, size, or description) in the session and stop. Otherwise take the first result and go to suggest_outfit. — agent.py::run_agent
         and stop. Otherwise take the first result and go to suggest_outfit."
         — agent.py::run_agent
 
