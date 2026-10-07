@@ -103,6 +103,9 @@ Listing fields: id, title, description, category, style_tags, size, condition, p
 ---
 
 ## Sample Run
+   git add .
+   git commit -m "Build search_listings"
+   git push
 
 <!-- Two things go here.
 

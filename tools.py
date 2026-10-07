@@ -20,9 +20,15 @@ That last line is what your loop branches on. "Returns a list" earns nothing —
 the description has to say what is *in* the list.
 """
 
+import re
 import config  # noqa: F401 — you'll use this in search_listings
 from generate import generate
 from utils.data_loader import load_listings
+
+
+def _tokens(text: str) -> set[str]:
+    """Lowercase words and numbers in a string, e.g. 'S/M' -> {'s', 'm'}."""
+    return set(re.findall(r"[a-z0-9]+", text.lower()))
 
 
 # ── Tool 1: search_listings ───────────────────────────────────────────────────
@@ -78,8 +84,22 @@ def search_listings(
     Test it from a terminal before you move on:
         python -c "from tools import search_listings; print(search_listings('graphic tee', max_price=30))"
     """
-    # TODO: replace this with your implementation
-    return []
+    wanted = _tokens(description)
+    results = []
+    for item in load_listings():
+        if max_price is not None and item["price"] > max_price:
+            continue
+        if size is not None and not _tokens(size) <= _tokens(item["size"]):
+            continue
+        searchable = _tokens(
+            " ".join([item["title"], item["description"], " ".join(item["style_tags"])])
+        )
+        score = len(wanted & searchable)
+        if score == 0:
+            continue
+        results.append((score, item))
+    results.sort(key=lambda pair: pair[0], reverse=True)
+    return [item for _, item in results][: config.SEARCH_RESULT_LIMIT]
 
 
 # ── Tool 2: suggest_outfit ────────────────────────────────────────────────────
@@ -112,10 +132,24 @@ def suggest_outfit(new_item: dict, wardrobe: dict) -> str:
     Test it from a terminal before you move on:
         python -c "from tools import suggest_outfit; from utils.data_loader import get_example_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_example_wardrobe()))"
     """
-    # TODO: replace this with your implementation
-    return ""
+    
 
-
+    wanted = _tokens(description)
+    results = []
+    for item in load_listings():
+        if max_price is not None and item["price"] > max_price:
+            continue
+        if size is not None and not _tokens(size) <= _tokens(item["size"]):
+            continue
+        searchable = _tokens(
+            " ".join([item["title"], item["description"], " ".join(item["style_tags"])])
+        )
+        score = len(wanted & searchable)
+        if score == 0:
+            continue
+        results.append((score, item))
+    results.sort(key=lambda pair: pair[0], reverse=True)
+    return [item for _, item in results][: config.SEARCH_RESULT_LIMIT]
 # ── Tool 3: create_fit_card ───────────────────────────────────────────────────
 
 def create_fit_card(outfit: str, new_item: dict) -> str:
