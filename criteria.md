@@ -2,7 +2,7 @@
 
 Five criteria that say what "working" means for this agent, written in unit 3
 **before** any results existed.
-Across 3 runs on the same item, every fit card mentions the item, in 3 of 3 runs.
+
 An acceptance criterion names a target: a number, a count, a rate, or something
 a person could plainly observe. *"The agent handles errors"* is an opinion.
 *"When search returns nothing, the agent stops before calling the second tool,
@@ -56,7 +56,15 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:**
+**Why this target:**After a run where search_listings returns results, the item's id in session["selected_item"] matches the item passed into suggest_outfit, in 3 of 3 tries.
+You're checking whether the system keeps track of the correct item after searching.
+search_listings finds items.
+One of those items becomes the selected item.
+That selected item's id is stored in session["selected_item"].
+Later, suggest_outfit receives an item.
+You want to make sure it's the same item, not a different result.
+Why id?
+Because the item's ID is the most reliable way to identify a specific item. Names can be duplicated or slightly different, but an ID should uniquely identify it.
 
 
 
@@ -77,7 +85,12 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:**
+**Why this target:**Across 3 runs on the same item, every fit card mentions the item, in 3 of 3 runs.
+What this is testing:
+You're checking whether the outfit recommendations actually relate back to the item the user selected.
+For example, if the selected item is a black leather jacket, a fit card should say something like:
+“Pair the black leather jacket with…”
+rather than generating an outfit that completely ignores the jacket.
 
 
 
@@ -94,7 +107,7 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:**
+**Why this target:**Across 3 runs on the same item, every fit card stays within the required length limit, in 3 of 3 runs.The important thing is that “3 of 3” should only be used if you actually observed the behavior in all three tests. If you only ran it twice, for example, it would be 2 of 2.
 
 
 
