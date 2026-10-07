@@ -38,7 +38,7 @@
 <!-- ═══════════════════════ UNIT 3 — THE BUILD ═══════════════════════ -->
 
 ## What This Does
-
+A user describes a thrift find, like "vintage graphic tee under $30". FitFindr searches a listings file for matches, and is designed to suggest outfits using the user's wardrobe and write a shareable caption. In this submission, search_listings is built and tested. The outfit suggestion, caption, and planning loop are not finished.
 <!-- Three or four sentences: what a user asks for, and what they get back. -->
 
 
@@ -46,7 +46,7 @@
 ---
 
 ## Tool Inventory
-Listing fields: id, title, description, category, style_tags, size, condition, price, colors, brand, platform
+A list of listing dicts (id, title, description, category, style_tags, size, condition, price, colors, brand, platform), ranked by how many words of the description appear in the title, description, or style tags (best first), limited to config.SEARCH_RESULT_LIMIT. A size matches when every token of the requested size appears in the listing's size, so "M" matches "S/M".
 <!-- Four lines per tool. This is worth 2 points and it's the single most
      common place students lose them.
 
@@ -72,7 +72,7 @@ Listing fields: id, title, description, category, style_tags, size, condition, p
 
 ### `create_fit_card`
 
- **What it does:** Writes a short social-media-style caption for an outfit.
+- **What it does:** Writes a short social-media-style caption for an outfit.
 - **Inputs:** `outfit` (str, the text from suggest_outfit), `new_item` (dict, the listing)
 - **Returns:** A string of 1-3 sentences that someone would actually post, mentioning the item.
 - **When it has nothing:** If `outfit` is empty, returns a caption based on `new_item` alone.
@@ -92,7 +92,7 @@ Listing fields: id, title, description, category, style_tags, size, condition, p
      The grader checks your code against what you claim here, so the file and
      function have to be real. -->
 
-**Branch rule:**If search_listings returns an empty list, put a message naming what to change (loosen the price, size, or description) in the session and stop. Otherwise take the first result and go to suggest_outfit.
+**Branch rule:** If search_listings returns an empty list, put a message naming what to change (loosen the price, size, or description) in the session and stop. Otherwise take the first result and go to suggest_outfit.
 
 **Where it lives:** `agent.py::run_agent`
 
@@ -103,11 +103,6 @@ Listing fields: id, title, description, category, style_tags, size, condition, p
 ---
 
 ## Sample Run
-   git add .
-   git commit -m "Build search_listings"
-   git push
-
-<!-- Two things go here.
 
      1. One FULL query and its output, pasted as text.
      2. Your three per-tool terminal tests — the command and what it printed. -->
@@ -115,7 +110,7 @@ Listing fields: id, title, description, category, style_tags, size, condition, p
 **One full query**
 
 ```
-$ python app.py ask '...'
+$ python app.py ask not completed
 
 ```
 
