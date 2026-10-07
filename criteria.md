@@ -2,7 +2,7 @@
 
 Five criteria that say what "working" means for this agent, written in unit 3
 **before** any results existed.
-
+Across 3 runs on the same item, every fit card mentions the item, in 3 of 3 runs.
 An acceptance criterion names a target: a number, a count, a rate, or something
 a person could plainly observe. *"The agent handles errors"* is an opinion.
 *"When search returns nothing, the agent stops before calling the second tool,
