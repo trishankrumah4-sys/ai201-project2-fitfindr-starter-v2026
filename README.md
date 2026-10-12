@@ -99,10 +99,9 @@ A list of listing dicts (id, title, description, category, style_tags, size, con
 
 **Where it lives:** `agent.py::run_agent`
 
-**How the query is parsed:** <!-- regex, string splitting, or asking the model — say which -->
+**How the query is parsed:** regex, in `agent.py::_parse_query`. It pulls a price after "under" or a `$` sign, a size after the word "size", and treats the rest as the description.
 
-**What moves through the session:** <!-- which fields, in what order -->
-
+**What moves through the session:** `query` → `parsed` → `search_results` → `selected_item` → `outfit_suggestion` → `fit_card`. Each tool's result is stored in the session, and the next call reads its input back out of it.
 ---
 
 ## Sample Run
