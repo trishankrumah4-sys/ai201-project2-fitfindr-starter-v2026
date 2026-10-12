@@ -134,22 +134,38 @@ def suggest_outfit(new_item: dict, wardrobe: dict) -> str:
     """
     
 
-    wanted = _tokens(description)
-    results = []
-    for item in load_listings():
-        if max_price is not None and item["price"] > max_price:
-            continue
-        if size is not None and not _tokens(size) <= _tokens(item["size"]):
-            continue
-        searchable = _tokens(
-            " ".join([item["title"], item["description"], " ".join(item["style_tags"])])
+    items = wardrobe.get("items", [])
+    colors = ", ".join(new_item["colors"])
+    tags = ", ".join(new_item["style_tags"])
+    item_text = f"{new_item['title']} ({new_item['category']}, {colors}; style: {tags})"
+
+    if not items:
+        prompt = (
+            "You are a thrift stylist. Someone is considering this secondhand find:\n"
+            + item_text
+            + "\n\nThey have not told you what is in their wardrobe. Give general "
+            "styling ideas for one or two outfits built around this item. "
+            "Keep it under 120 words, plain text."
         )
-        score = len(wanted & searchable)
-        if score == 0:
-            continue
-        results.append((score, item))
-    results.sort(key=lambda pair: pair[0], reverse=True)
-    return [item for _, item in results][: config.SEARCH_RESULT_LIMIT]
+    else:
+        owned = "\n".join(
+            f"- {w['name']} ({w['category']}; {', '.join(w['colors'])}; {w.get('notes', '')})"
+            for w in items
+        )
+        prompt = (
+            "You are a thrift stylist. Someone is considering this secondhand find:\n"
+            + item_text
+            + "\n\nHere is what they already own:\n"
+            + owned
+            + "\n\nSuggest one or two outfits that combine the find with specific "
+            "pieces from their wardrobe, naming those pieces exactly as listed. "
+            "Keep it under 120 words, plain text."
+        )
+
+    response = str(generate(prompt)).strip()
+    if not response:
+        return "No outfit suggestion came back. Try again."
+    return response
 # ── Tool 3: create_fit_card ───────────────────────────────────────────────────
 
 def create_fit_card(outfit: str, new_item: dict) -> str:
@@ -186,5 +202,22 @@ def create_fit_card(outfit: str, new_item: dict) -> str:
     Test it from a terminal before you move on:
         python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(create_fit_card('jeans and white sneakers', load_listings()[0]))"
     """
-    # TODO: replace this with your implementation
-    return ""
+    if not outfit or not outfit.strip():
+        return "No outfit was provided, so there is no fit card to write yet."
+
+    prompt = (
+        "Write a short social media caption (two to four sentences) about a "
+        "thrift find. It should sound like a real person posting, not a product "
+        "description. Mention the item, its price, and the platform it came from "
+        "once each, and be specific about the vibe. At most two hashtags.\n\n"
+        f"Item: {new_item['title']}\n"
+        f"Price: ${new_item['price']:g}\n"
+        f"Platform: {new_item['platform']}\n"
+        f"Outfit idea: {outfit}\n\n"
+        "Return only the caption."
+    )
+
+    caption = str(generate(prompt)).strip()
+    if not caption:
+        return "No caption came back. Try again."
+    return caption

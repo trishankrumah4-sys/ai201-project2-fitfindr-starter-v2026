@@ -43,6 +43,7 @@ Given a query that matches no listings, the agent stops before calling
 ---
 
 ## 3. Something about state
+After a run where `search_listings` returns results, the item's `id` in `session["selected_item"]` matches the item passed into `suggest_outfit`, in 3 of 3 tries.
 
 <!-- YOU WRITE THIS ONE.
 
@@ -56,8 +57,7 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:**After a run where search_listings returns results, the item's id in session["selected_item"] matches the item passed into suggest_outfit, in 3 of 3 tries.
-You're checking whether the system keeps track of the correct item after searching.
+**Why this target:**You're checking whether the system keeps track of the correct item after searching.
 search_listings finds items.
 One of those items becomes the selected item.
 That selected item's id is stored in session["selected_item"].
@@ -71,6 +71,8 @@ Because the item's ID is the most reliable way to identify a specific item. Name
 ---
 
 ## 4. Something about the fit card
+Across 3 runs on the same item, every fit card mentions the item, in 3 of 3 runs.
+
 
 <!-- YOU WRITE THIS ONE.
 
@@ -85,9 +87,7 @@ Because the item's ID is the most reliable way to identify a specific item. Name
 
 
 
-**Why this target:**Across 3 runs on the same item, every fit card mentions the item, in 3 of 3 runs.
-What this is testing:
-You're checking whether the outfit recommendations actually relate back to the item the user selected.
+**Why this target:**You're checking whether the outfit recommendations actually relate back to the item the user selected.
 For example, if the selected item is a black leather jacket, a fit card should say something like:
 “Pair the black leather jacket with…”
 rather than generating an outfit that completely ignores the jacket.
@@ -97,6 +97,7 @@ rather than generating an outfit that completely ignores the jacket.
 ---
 
 ## 5. Your choice
+Across 3 runs on the same item, every fit card stays within the required length limit, in 3 of 3 runs.
 
 <!-- YOU WRITE THIS ONE TOO.
 
@@ -107,7 +108,7 @@ rather than generating an outfit that completely ignores the jacket.
 
 
 
-**Why this target:**Across 3 runs on the same item, every fit card stays within the required length limit, in 3 of 3 runs.The important thing is that “3 of 3” should only be used if you actually observed the behavior in all three tests. If you only ran it twice, for example, it would be 2 of 2.
+**Why this target:**The important thing is that “3 of 3” should only be used if you actually observed the behavior in all three tests. If you only ran it twice, for example, it would be 2 of 2.
 
 
 
