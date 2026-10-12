@@ -38,7 +38,7 @@
 <!-- ═══════════════════════ UNIT 3 — THE BUILD ═══════════════════════ -->
 
 ## What This Does
-A user describes a thrift find, like "vintage graphic tee under $30". FitFindr searches a listings file for matches, and is designed to suggest outfits using the user's wardrobe and write a shareable caption. In this submission, search_listings is built and tested. The outfit suggestion, caption, and planning loop are not finished.
+   A user describes a thrift find, like "vintage graphic tee under $30, size M". FitFindr searches a listings file for matches, suggests outfits using the user's wardrobe, and writes a short shareable caption for the find. If nothing matches, it stops and tells the user what to change instead of calling the later tools.
 <!-- Three or four sentences: what a user asks for, and what they get back. -->
 
 
