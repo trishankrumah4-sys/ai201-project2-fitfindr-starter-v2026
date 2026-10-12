@@ -110,8 +110,10 @@ A list of listing dicts (id, title, description, category, style_tags, size, con
 **One full query**
 
 ```
-$ python app.py ask not completed
-
+$ python app.py ask 'vintage graphic tee under $30, size M'
+Found:    Y2K Baby Tee — Butterfly Print — $18.0 on depop
+  Outfit:   ...
+  Fit card: ...
 ```
 
 **The three tools, tested one at a time**
