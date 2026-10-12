@@ -58,20 +58,22 @@ A list of listing dicts (id, title, description, category, style_tags, size, con
      on, and if you don't decide it here you'll discover it as a crash in
      Milestone 5. -->
 
-### `search_listings`
+- **Returns:** A list of listing dicts (id, title, description, category, style_tags, size, condition, price, colors, brand, platform), ranked by how many words of the description appear in the title, description, or style tags (best first), limited to config.SEARCH_RESULT_LIMIT. A size matches when every token of the requested size appears in the listing's size, so "M" matches "S/M".
 
 - **What it does:** Searches data/listings.json for items matching a text description, a size, and a price ceiling.
 - **Inputs:** `description` (str), `size` (str), `max_price` (float)
 - **Returns:** A list of listing dicts, each with id, title, description, category, style_tags, size, condition, price, colors, brand, platform.
 - **When it has nothing:** Returns an empty list `[]` (not None, not an error).
-### `suggest_outfit`
+- **Inputs:** `new_item` (dict, a listing from search_listings), `wardrobe` (dict with an `items` key holding a list of wardrobe item dicts; `items` may be empty)
+- **Returns:** A string with one or two outfit ideas, each naming the new item and the wardrobe pieces it goes with.
 
 - **What it does:** Takes one listing and the user's wardrobe and suggests outfits that combine them.
 - **Inputs:** `new_item` (dict, a listing from search_listings), `wardrobe` (list of dicts, the wardrobe items; may be empty)
 - **Returns:** A string of 2-3 outfit ideas, each naming the new item and the wardrobe pieces it goes with.
 - **When it has nothing:** If `wardrobe` is empty, returns a string of general styling advice for the item instead of failing.
 
-### `create_fit_card`
+- **Returns:** A two-to-four sentence caption (a string) that mentions the item, its price, and its platform.
+- **When it has nothing:** If `outfit` is empty, returns a message saying there is no fit card to write yet.
 
 - **What it does:** Writes a short social-media-style caption for an outfit.
 - **Inputs:** `outfit` (str, the text from suggest_outfit), `new_item` (dict, the listing)
