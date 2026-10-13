@@ -106,36 +106,61 @@ A list of listing dicts (id, title, description, category, style_tags, size, con
 
 ## Sample Run
 
-     1. One FULL query and its output, pasted as text.
-     2. Your three per-tool terminal tests — the command and what it printed. -->
-
-**One full query**
+ **One full query**
 
 ```
 $ python app.py ask 'vintage graphic tee under $30, size M'
-Found:    Y2K Baby Tee — Butterfly Print — $18.0 on depop
-  Outfit:   ...
-  Fit card: ...
+
+  Found:    Y2K Baby Tee — Butterfly Print — $18.0 on depop
+
+  Outfit:   Outfit One: Pair the Y2K Baby Tee with your Baggy straight-leg jeans, dark wash for that classic 2000s contrast. Add the Black combat boots and the Black crossbody bag to ground the pastel butterfly print with some edge.
+
+Outfit Two: Tuck the Y2K Baby Tee into your Wide-leg khaki trousers. Layer the Vintage black denim jacket on top, and finish the look with your Chunky white sneakers for a casual, effortless daytime vibe.
+
+  Fit card: Finally scored this pastel butterfly Y2K baby tee on depop for just $18 and I am obsessed. Gives off total 2000s mall-goth-meets-sweetheart energy, especially styled with baggy dark wash denim and chunky boots. Can’t wait to live in this all spring. #depopfinds #y2kstyle
+
+0 model calls this session, 2 served from cache
 ```
+
+(This output was served from the starter's cache.)
 
 **The three tools, tested one at a time**
 
 ```
 $ python -c "from tools import search_listings; print(search_listings('graphic tee', max_price=30))"
-
+[{'id': 'lst_002', 'title': 'Y2K Baby Tee — Butterfly Print', 'size': 'S/M', 'price': 18.0, 'platform': 'depop', ...}, {'id': 'lst_006', 'title': 'Graphic Tee — 2003 Tour Bootleg Style', 'size': 'L', 'price': 24.0, 'platform': 'depop', ...}, ... 6 listings in total, all $30 or under]
 ```
 
 ```
-$ python -c "from tools import suggest_outfit; ..."
-
+$ python -c "from tools import search_listings; print(search_listings('zzzz'))"
+[]
 ```
 
 ```
-$ python -c "from tools import create_fit_card; ..."
+$ python -c "from tools import suggest_outfit; from utils.data_loader import get_example_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_example_wardrobe()))"
+Grab those Vintage Levi's 501 Jeans and tuck in your White ribbed tank top. Cinch it all together with the Brown leather belt for some classic definition, then step into your Chunky white sneakers for an effortless, everyday look. Throw the Black cropped zip hoodie over your shoulders if you need an extra layer.
 
+For a cool streetwear edge, pair the Levi's with your Oversized grey crewneck sweatshirt. Layer your Vintage black denim jacket on top, and finish the outfit with your Black combat boots and the Black crossbody bag for a sharp, textured monochrome contrast.
 ```
 
----
+```
+$ python -c "from tools import suggest_outfit; from utils.data_loader import get_empty_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_empty_wardrobe()))"
+Vintage Levi's 501s are the ultimate wardrobe building block. Since they have that perfect mid-rise and straight-leg fit, you can easily dress them up or down.
+
+For an effortless daytime look, pair them with a slightly oversized white cotton button-down, tucked in casually at the front. Add a classic brown leather belt, retro sneakers, and a canvas tote bag for an easy, timeless vibe.
+
+To shift into evening or edgy streetwear, swap the button-down for a fitted black ribbed tank top or a vintage band tee. Layer on an oversized leather biker jacket, chunky black boots, and silver hoop earrings. The contrast between the rugged denim and sleek accessories always hits the mark.
+```
+
+```
+$ python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(create_fit_card('jeans and white sneakers', load_listings()[0]))"
+Found these vintage Levi's 501 jeans on Depop for just $38 and I am never taking them off. The medium wash has that 90s slouchy, effortless vibe I’ve been hunting for forever. Can't wait to style them with my favorite white sneakers for an easy weekend look. #thriftfind #vintagelevis
+```
+
+```
+$ python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(create_fit_card('', load_listings()[0]))"
+No outfit was provided, so there is no fit card to write yet.
+```
 
 ## How I Used AI
 
