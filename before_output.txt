@@ -1,0 +1,448 @@
+Cache is OFF for this run — that's deliberate.
+
+matching query completes  (example wardrobe)
+  query: vintage graphic tee under $30
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your baggy straight-leg jeans. Cinch the waist with the brown leather bel…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Found the cutest butterfly print Y2K baby tee on depop for just $18 and I am obsessed. It gives major nostalgi…
+  try 1: completed — fit card 278 chars
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your baggy straight-leg jeans. Add the brown leather belt to define your …
+[5] create_fit_card
+      in:  outfit + selected item
+      out: scored this absolute gem of a butterfly print baby tee on depop for just $18 and I am obsessed. giving major 9…
+  try 2: completed — fit card 277 chars
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit one balances the tight Y2K silhouette of the butterfly tee with your baggy straight-leg jeans, dark was…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Still not over finding this butterfly print Y2K baby tee on Depop for just $18. Total early 2000s mall-goth en…
+  try 3: completed — fit card 204 chars
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with the Baggy straight-leg jeans, dark wash for a classic 2000s silhouette. A…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Found the ultimate 2000s butterfly print baby tee on Depop and I am obsessed. It was only $18 and gives off th…
+  try 4: completed — fit card 238 chars
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit One: Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash. Add a casual edge with the bl…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Found the ultimate butterfly print Y2K baby tee on depop for just $18 and I’m literally obsessed. Getting majo…
+  try 5: completed — fit card 220 chars
+
+impossible query stops early  (example wardrobe)
+  query: designer ballgown size XXS under $5
+[1] parse_query (regex)
+      in:  designer ballgown size XXS under $5
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+[3] branch: no results
+      →    empty search, stopping before suggest_outfit
+  try 1: stopped early — No listings matched. Try a broader description, a higher pri
+[1] parse_query (regex)
+      in:  designer ballgown size XXS under $5
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+[3] branch: no results
+      →    empty search, stopping before suggest_outfit
+  try 2: stopped early — No listings matched. Try a broader description, a higher pri
+[1] parse_query (regex)
+      in:  designer ballgown size XXS under $5
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+[3] branch: no results
+      →    empty search, stopping before suggest_outfit
+  try 3: stopped early — No listings matched. Try a broader description, a higher pri
+[1] parse_query (regex)
+      in:  designer ballgown size XXS under $5
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+[3] branch: no results
+      →    empty search, stopping before suggest_outfit
+  try 4: stopped early — No listings matched. Try a broader description, a higher pri
+[1] parse_query (regex)
+      in:  designer ballgown size XXS under $5
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+[3] branch: no results
+      →    empty search, stopping before suggest_outfit
+  try 5: stopped early — No listings matched. Try a broader description, a higher pri
+
+empty wardrobe  (empty wardrobe)
+  query: denim jacket under $50
+[1] parse_query (regex)
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+[3] select first result
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[4] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: As your thrift stylist, I love this find! A light wash cropped denim jacket is endlessly versatile.   For an e…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Finally scored this cropped light wash denim jacket on Poshmark and I am obsessed. For forty-two bucks, it has…
+  try 1: completed — fit card 268 chars
+[1] parse_query (regex)
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+[3] select first result
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[4] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: This light wash cropped denim jacket is a versatile closet hero.   For an effortless daytime look, pair it wit…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Finally tracked down this cropped light wash denim jacket on Poshmark and I'm obsessed. For forty-two bucks, i…
+  try 2: completed — fit card 199 chars
+[1] parse_query (regex)
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+[3] select first result
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[4] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Hey! As a thrift stylist, I love this find—a light wash cropped denim jacket is the ultimate versatile layerin…
+  [rate limit] 15 requests used this minute. Waiting 43s. This is normal.
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Scored this light wash cropped denim jacket on Poshmark for $42 and I’m already obsessed. It’s giving major 90…
+  try 3: completed — fit card 274 chars
+[1] parse_query (regex)
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+[3] select first result
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[4] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Since you do not have your wardrobe details yet, here are two versatile ways to style this classic piece.  Opt…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Scored this cropped light wash denim jacket on Poshmark for $42 and I’m honestly obsessed. It has that perfect…
+  try 4: completed — fit card 273 chars
+[1] parse_query (regex)
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+[3] select first result
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[4] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: This light wash cropped denim jacket is a versatile layering essential.   Outfit one leans into effortless str…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Finally scored the ultimate 90s indie sleaze dream jacket on Poshmark for $42. It’s the exact faded light wash…
+  try 5: completed — fit card 312 chars
+
+state: selected item reaches suggest_outfit  (example wardrobe)
+  query: vintage graphic tee under $30, size M
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30, size M
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 8 items: Y2K Baby Tee — Butterfly Print, Mesh Long-Sleeve Top — Black, 90s Silk Slip Dress — Floral, Midi Length … +5 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with the Baggy straight-leg jeans, dark wash for classic 2000s proportions. Ad…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Just scored this little butterfly baby tee on depop for $18 and I am obsessed with the ultimate 2000s mall rat…
+  try 1: completed — fit card 271 chars
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30, size M
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 8 items: Y2K Baby Tee — Butterfly Print, Mesh Long-Sleeve Top — Black, 90s Silk Slip Dress — Floral, Midi Length … +5 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit One: Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash. Add the black cropped zip hoo…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Finally scored this butterfly print Y2K baby tee on depop for just $18 and I’m obsessed with the early 2000s m…
+  try 2: completed — fit card 285 chars
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30, size M
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 8 items: Y2K Baby Tee — Butterfly Print, Mesh Long-Sleeve Top — Black, 90s Silk Slip Dress — Floral, Midi Length … +5 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your Baggy straight-leg jeans, dark wash. Add the Vintage black denim jac…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: scored this butterfly print Y2K baby tee on depop for just $18 and I am obsessed. it has the absolute ultimate…
+  try 3: completed — fit card 227 chars
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30, size M
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 8 items: Y2K Baby Tee — Butterfly Print, Mesh Long-Sleeve Top — Black, 90s Silk Slip Dress — Floral, Midi Length … +5 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Look 1: Pair the Y2K Baby Tee with your Baggy straight-leg jeans, dark wash for a classic 2000s silhouette. Ad…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Manifesting 2002 pop-princess energy with this butterfly print baby tee I just scored on Depop for $18. Seriou…
+  try 4: completed — fit card 189 chars
+[1] parse_query (regex)
+      in:  vintage graphic tee under $30, size M
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 8 items: Y2K Baby Tee — Butterfly Print, Mesh Long-Sleeve Top — Black, 90s Silk Slip Dress — Floral, Midi Length … +5 more
+[3] select first result
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your Baggy straight-leg jeans, dark wash. Add the Vintage black denim jac…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: scored this insanely nostalgic butterfly print Y2K baby tee on depop for just $18 and I’m obsessed. it has the…
+  try 5: completed — fit card 225 chars
+
+fit card mentions the item  (example wardrobe)
+  query: black mesh top
+[1] parse_query (regex)
+      in:  black mesh top
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description
+      out: 9 items: Mesh Long-Sleeve Top — Black, Oversized Flannel Shirt — Plaid Red/Black, Platform Mary Janes — Black Patent … +6 more
+[3] select first result
+      out: Mesh Long-Sleeve Top — Black ($15.0, depop)
+  [rate limit] 15 requests used this minute. Waiting 43s. This is normal.
+[4] suggest_outfit
+      in:  Mesh Long-Sleeve Top — Black ($15.0, depop)
+      out: Outfit 1: Layer the black mesh long-sleeve top directly over your white ribbed tank top, and pair it with your…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: scored this black mesh long-sleeve top on depop for only $15 and it is giving the ultimate 90s grunge energy. …
+  try 1: completed — fit card 225 chars
+[1] parse_query (regex)
+      in:  black mesh top
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description
+      out: 9 items: Mesh Long-Sleeve Top — Black, Oversized Flannel Shirt — Plaid Red/Black, Platform Mary Janes — Black Patent … +6 more
+[3] select first result
+      out: Mesh Long-Sleeve Top — Black ($15.0, depop)
+[4] suggest_outfit
+      in:  Mesh Long-Sleeve Top — Black ($15.0, depop)
+      out: Outfit 1: Layer the black mesh top over the white ribbed tank top, and pair it with the baggy straight-leg jea…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: scored this black mesh long-sleeve top on depop for just $15 and it’s giving the ultimate Y2K grunge energy. a…
+  try 2: completed — fit card 220 chars
+[1] parse_query (regex)
+      in:  black mesh top
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description
+      out: 9 items: Mesh Long-Sleeve Top — Black, Oversized Flannel Shirt — Plaid Red/Black, Platform Mary Janes — Black Patent … +6 more
+[3] select first result
+      out: Mesh Long-Sleeve Top — Black ($15.0, depop)
+[4] suggest_outfit
+      in:  Mesh Long-Sleeve Top — Black ($15.0, depop)
+      out: Outfit 1: Layer the new mesh top over your white ribbed tank top, and pair them with your baggy straight-leg j…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Scored this black mesh long-sleeve on depop for only $15 and it is giving the ultimate Y2K grunge energy. Can’…
+  try 3: completed — fit card 268 chars
+[1] parse_query (regex)
+      in:  black mesh top
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description
+      out: 9 items: Mesh Long-Sleeve Top — Black, Oversized Flannel Shirt — Plaid Red/Black, Platform Mary Janes — Black Patent … +6 more
+[3] select first result
+      out: Mesh Long-Sleeve Top — Black ($15.0, depop)
+[4] suggest_outfit
+      in:  Mesh Long-Sleeve Top — Black ($15.0, depop)
+      out: Outfit 1: Layer the new mesh top under the white ribbed tank top, and pair them with your baggy straight-leg j…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Managed to score this black mesh long-sleeve on depop for just $15 and I am so obsessed. Giving major 90s grun…
+  try 4: completed — fit card 262 chars
+[1] parse_query (regex)
+      in:  black mesh top
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description
+      out: 9 items: Mesh Long-Sleeve Top — Black, Oversized Flannel Shirt — Plaid Red/Black, Platform Mary Janes — Black Patent … +6 more
+[3] select first result
+      out: Mesh Long-Sleeve Top — Black ($15.0, depop)
+[4] suggest_outfit
+      in:  Mesh Long-Sleeve Top — Black ($15.0, depop)
+      out: Outfit 1: Layer the black mesh long-sleeve top directly over your white ribbed tank top, pairing it with your …
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Just scored this black mesh long-sleeve top on depop for only $15 and it is giving peak grungy Y2K energy. Can…
+  try 5: completed — fit card 232 chars
+
+fit card length  (example wardrobe)
+  query: vintage band tee under $30
+[1] parse_query (regex)
+      in:  vintage band tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+[3] select first result
+      out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+  [rate limit] 15 requests used this minute. Waiting 1s. This is normal.
+[4] suggest_outfit
+      in:  Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+      out: Outfit 1: Channel effortless 90s grunge by pairing the graphic tee with your baggy straight-leg jeans, dark wa…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: scored this 2003 tour bootleg graphic tee on depop for just $24 and it honestly might be my best find yet. obs…
+  try 1: completed — fit card 290 chars
+[1] parse_query (regex)
+      in:  vintage band tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+[3] select first result
+      out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+[4] suggest_outfit
+      in:  Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+      out: Outfit one leans into classic grunge. Pair the Graphic Tee with your Baggy straight-leg jeans, dark wash. Tuck…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Finally tracked down the ultimate 2003 tour bootleg tee on Depop and I'm obsessed. For just $24, it has that p…
+  try 2: completed — fit card 257 chars
+[1] parse_query (regex)
+      in:  vintage band tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+[3] select first result
+      out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+[4] suggest_outfit
+      in:  Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+      out: Outfit One: Pair the graphic tee with your baggy straight-leg jeans, dark wash. Tuck it in loosely with your b…
+  [rate limit] 15 requests used this minute. Waiting 43s. This is normal.
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Found this absolute grail of a 2003 tour bootleg tee on depop for just $24 and I'm obsessed. The fade and wear…
+  try 3: completed — fit card 278 chars
+[1] parse_query (regex)
+      in:  vintage band tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+[3] select first result
+      out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+[4] suggest_outfit
+      in:  Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+      out: Outfit 1: Pair the graphic tee with your Baggy straight-leg jeans, dark wash. Layer the Vintage black denim ja…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Scored this faded 2003 tour bootleg tee on Depop for just $24 and I'm obsessed. Total grunge-streetwear energy…
+  try 4: completed — fit card 228 chars
+[1] parse_query (regex)
+      in:  vintage band tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, max_price
+      out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+[3] select first result
+      out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+[4] suggest_outfit
+      in:  Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+      out: Outfit 1: Pair the graphic tee with the baggy straight-leg jeans in dark wash and the black combat boots. Laye…
+[5] create_fit_card
+      in:  outfit + selected item
+      out: Still kicking myself that I found this 2003 tour bootleg graphic tee on depop for just $24. It has the absolut…
+  try 5: completed — fit card 301 chars
+
+Wrote results/run_2026-10-13_2356_before.md
+50 model calls this session, 10742 prompt + 4512 output tokens
+
+Commit this file. It's the evidence the test actually happened.
