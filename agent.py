@@ -15,6 +15,7 @@ Build and test your three tools in `tools.py` first. Then come here.
 
 import re
 import config
+from mcp_client import call_tool
 import trace
 from tools import search_listings, suggest_outfit, create_fit_card
 from generate import ModelUnavailable
@@ -140,9 +141,12 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     # Step 2: search
     iterations += 1
     trace.check_iterations(iterations)
-    session["search_results"] = search_listings(
-        parsed["description"], parsed["size"], parsed["max_price"]
-    )
+    args = {"description": parsed["description"]}
+    if parsed["size"] is not None:
+        args["size"] = parsed["size"]
+    if parsed["max_price"] is not None:
+        args["max_price"] = parsed["max_price"]
+    session["search_results"] = call_tool("search_listings", args)
 
     # THE BRANCH: nothing came back, so stop before the second tool
     if not session["search_results"]:
