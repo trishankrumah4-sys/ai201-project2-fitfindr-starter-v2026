@@ -203,11 +203,11 @@ No outfit was provided, so there is no fit card to write yet.
 
 | Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |  |  |
+| 1. matching query completes | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 2. impossible query stops early | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. state: selected item reaches suggest_outfit | 3 of 3 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 4. fit card mentions the item | 3 of 3 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 5. fit card length | 3 of 3 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
 
 **Real output from one try**, pasted as text, naming the file and function
 that produced it:
