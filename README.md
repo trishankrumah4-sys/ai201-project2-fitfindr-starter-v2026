@@ -238,15 +238,18 @@ that produced it:
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | A matching query completes all three tools | 4 of 5 | MET | All 5 tries ran search, outfit suggestion, and fit card without stopping. 5 passes against a target of 4. |
+| 2 | An impossible query stops before the second tool | 5 of 5 | MET | All 5 tries stopped after the empty search, before suggest_outfit, with zero model calls. The message told the user to try a broader description, a higher price ceiling, or a different size. |
+| 3 | The item the search found is the item passed to suggest_outfit | 3 of 3 | MET | In all 5 tries the selected item in the session matched the item suggest_outfit received (same title, price, and platform in the trace). The trace does not print the id, so this is a weaker check than my criterion says. |
+| 4 | The fit card mentions the item | 3 of 3 | MET | I counted a caption as mentioning the item if it used a distinctive word from the listing title, such as "mesh" or "butterfly". All 5 captions for the mesh top did. |
+| 5 | The fit card stays within the length limit | 3 of 3 | MET | I read the limit as two to four sentences, from my own create_fit_card spec, with hashtags not counted. Every caption I checked had two or three sentences. |
 
 **Diagnoses**
+Nothing missed, so there is no failure to diagnose. That says as much about my targets as about the agent.
 
+My targets were easy. Criterion 1 asked for 4 of 5 on a query that clearly matches listings, which is hard to miss. Criteria 4 and 5 were also loose. The prompt hands the model the item, so mentioning it is close to guaranteed, and two to four sentences is a wide range. I scored criteria 3 to 5 as every try has to pass, since the test ran five tries but those criteria said 3 of 3. The state check is also weak, because the trace shows the title, price and platform but not the id.
 
+One real problem got past all five of my criteria. For "vintage graphic tee under $30", the agent picked the Y2K Baby Tee in all five tries, ahead of "Graphic Tee — 2003 Tour Bootleg Style", which is the closer match. For "vintage band tee under $30", it picked the Graphic Tee rather than "Vintage Band Tee — Faded Grey". Because it was the same pick every time, this comes from the search ranking in tools.py::search_listings, not from the model. My likely explanation is that listings tie on matching words and ties are broken by their order in the data file. I have not yet confirmed that by printing the scores. None of my five criteria measure which result gets picked, so this is a gap in my criteria.
 
 ---
 
