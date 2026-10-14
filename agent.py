@@ -131,12 +131,14 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     session = new_session(query, wardrobe)
 
     iterations = 0
+    trace.start_trace()
 
     # Step 1: parse the query
     iterations += 1
     trace.check_iterations(iterations)
     session["parsed"] = _parse_query(query)
     parsed = session["parsed"]
+    trace.step("parse_query (regex)", inputs=query, returned=parsed)
 
     # Step 2: search
     iterations += 1
@@ -147,6 +149,8 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     if parsed["max_price"] is not None:
         args["max_price"] = parsed["max_price"]
     session["search_results"] = call_tool("search_listings", args)
+    trace.step("search_listings (via MCP)", inputs=args,
+               returned=session["search_results"])
 
     # THE BRANCH: nothing came back, so stop before the second tool
     if not session["search_results"]:
@@ -154,10 +158,12 @@ def run_agent(query: str, wardrobe: dict) -> dict:
             "No listings matched. Try a broader description, a higher price "
             "ceiling, or a different size."
         )
+        trace.step("branch: no results", note="empty search, stopping before suggest_outfit")
         return session
 
     # Step 3: choose the first result, read it back out of the session
     session["selected_item"] = session["search_results"][0]
+    trace.step("select first result", returned=session["selected_item"])
 
     # Step 4: outfit suggestion, reading the item from the session
     iterations += 1
@@ -165,6 +171,8 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     session["outfit_suggestion"] = suggest_outfit(
         session["selected_item"], session["wardrobe"]
     )
+    trace.step("suggest_outfit", inputs=session["selected_item"],
+               returned=session["outfit_suggestion"])
 
     # Step 5: fit card, reading both values from the session
     iterations += 1
@@ -172,6 +180,8 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     session["fit_card"] = create_fit_card(
         session["outfit_suggestion"], session["selected_item"]
     )
+    trace.step("create_fit_card", inputs="outfit + selected item",
+               returned=session["fit_card"])
 
     return session
 
