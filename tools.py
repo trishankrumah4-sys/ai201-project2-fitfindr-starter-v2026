@@ -97,6 +97,8 @@ def search_listings(
         score = len(wanted & searchable)
         if score == 0:
             continue
+        # tie-break: words found in the title count extra
+        score += 0.5 * len(wanted & _tokens(item["title"]))
         results.append((score, item))
     results.sort(key=lambda pair: pair[0], reverse=True)
     return [item for _, item in results][: config.SEARCH_RESULT_LIMIT]
