@@ -173,15 +173,17 @@ No outfit was provided, so there is no fit card to write yet.
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Code to add to tools.py for suggest_outfit.
+- *What came back:* A script that put the search code into suggest_outfit instead of the right function, so it crashed with NameError: name 'description' is not defined.
+- *What I changed:* I used grep to see which lines belonged to which function, then had the code replaced so each tool had its own.
+
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Why the search picked the Y2K Baby Tee instead of the graphic tee.
+- *What came back:* A guess that listings were tying on score. I printed the scores and three listings did tie at 3.
+- *What I changed:* I made words in the title count extra, so ties break toward title matches.
+
 
 <!-- ═══════════════════════ UNIT 4 — THE TEST ═══════════════════════
 
@@ -277,10 +279,8 @@ One real problem got past all five of my criteria. For "vintage graphic tee unde
 
 ```
 
-**On the MCP move:** <!-- what changed in your code, and whether anything
-behaved differently afterwards. If the rewire didn't work, say exactly where it
-broke — the error text and the last thing that worked. That earns the point in
-full. -->
+**On the MCP move:** 
+I registered search_listings in mcp_server.py with a description and typed inputs, and run_agent() now calls it through mcp_client.call_tool. The results matched the direct call. Each call starts and stops the server, so it is slower.
 
 
 
@@ -324,10 +324,10 @@ full. -->
 ---
 
 ## What's Still Broken
-
-<!-- For each criterion still missed: what you'd do, and why you stopped where
-     you did. "I ran out of time" is fine if it's true. Pretending nothing is
-     left is not. -->
+- The model service returned 503 UNAVAILABLE errors in my after run, and the test harness recorded those tries as CRASHED. My agent's handler only gave a clean message when I forced a bad key, so I would add handling for temporary 503s, such as one retry and a message saying the service is busy. I stopped because it needs a retry design I did not have time to test.
+- My five criteria do not measure which listing the search picks. The ranking bug got past all of them. I would add a criterion about the top result matching the title words.
+- Criterion 1 had an easy target (4 of 5), and criteria 3 to 5 said "3 of 3" while the test ran five tries. I would rewrite them with real counts.
+- The state check only compares title, price and platform, because the trace does not print the id.
 
 
 
