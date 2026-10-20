@@ -287,6 +287,14 @@ full. -->
 ---
 
 ## The Improvement
+| Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
+|---|---|---|---|---|---|---|---|
+| 1. matching query completes | 4 of 5 | FAIL | FAIL | FAIL | FAIL | PASS | MISSED (1/5) |
+| 2. impossible query stops early | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. state: selected item reaches suggest_outfit | 3 of 3 | PASS | FAIL | FAIL | PASS | PASS | MISSED (3/5) |
+| 4. fit card mentions the item | 3 of 3 | PASS | FAIL | FAIL | PASS | PASS | MISSED (3/5) |
+| 5. fit card length | 3 of 3 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+**What I changed:** In tools.py::search_listings, words that appear in a listing's title now add 0.5 to its score, so ties break toward title matches.
 
 <!-- What you changed, why your diagnosis pointed at it, and the after-run in
      the same table format. One change, measured properly.
@@ -295,7 +303,7 @@ full. -->
 
 **What I changed:**
 
-**Which failure it was meant to fix:**
+**Which failure it was meant to fix:** The search ranked the Y2K Baby Tee ahead of the actual graphic tee because listings tied at 3 and ties went in file order.
 
 ### Run Log — After
 
@@ -309,8 +317,7 @@ full. -->
 
 **Did it help, and how do I know:**
 
-<!-- If it made things worse, say that. Honestly reported, that earns full
-     credit and is more interesting than one that worked. -->
+**Did it help, and how do I know:** It fixed the ranking: "vintage graphic tee" now picks the Graphic Tee, and "vintage band tee" now picks the Vintage Band Tee. The criteria numbers got worse, but the after run had many 503 UNAVAILABLE errors from the model service, so the comparison is not clean.
 
 
 
